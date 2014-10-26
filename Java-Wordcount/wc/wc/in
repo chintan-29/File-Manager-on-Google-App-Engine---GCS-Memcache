@@ -1,0 +1,26 @@
+*/
+public class FileReaderThread extends Thread implements Runnable {
+	StringBuilder buffer;
+
+	public FileReaderThread() {
+		buffer = new StringBuilder();
+	}
+
+	@Override
+	public void run() {
+	
+		String line;
+
+		try {
+			while ((line = ThreadUtilitiy.in.readLine()) != null) {
+				createChunks(line);
+			}
+			adjustLastChunk();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
