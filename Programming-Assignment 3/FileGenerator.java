@@ -39,10 +39,11 @@ public class FileGenerator
 					CopyStringToFile(bw, 102400);
 					file_10mb++;
 				}
-                else if(file_100mb<1) {
+		//TO create 100 mb file
+                /*else if(file_100mb<1) {
                     CopyStringToFile(bw, 1024000);
                     file_100mb++;
-                }
+                }*/
 				bw.close();
 			}
 			catch(IOException e) {
