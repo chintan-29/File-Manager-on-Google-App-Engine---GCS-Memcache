@@ -1,0 +1,117 @@
+2014-10-25 08:27:23,263+0000 INFO  Loader JAVA Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 1.7.0_51
+2014-10-25 08:27:23,276+0000 INFO  Loader VERSION Swift trunk git-rev: 2d334140f2c288e5aeb3d354de0ecda35b4b3aac heads/master 6130 (modified locally)
+2014-10-25 08:27:23,276+0000 INFO  Loader RUN_ID run009
+2014-10-25 08:27:23,276+0000 INFO  Loader ARGUMENTS [-runid, run009, -logfile, /home/ubuntu/data/swift-cloud-tutorial/wcount/run009/swift.log, wordcount.swift]
+2014-10-25 08:27:23,276+0000 INFO  Loader MAX_HEAP 954728448
+2014-10-25 08:27:23,277+0000 INFO  Loader GLOBUS_HOSTNAME ip-172-31-2-223
+2014-10-25 08:27:23,277+0000 INFO  Loader CWD /home/ubuntu/data/swift-cloud-tutorial/wcount/.
+2014-10-25 08:27:23,280+0000 DEBUG Loader SWIFT_CONFIGURATION 
+[D] /usr/local/bin/swift-trunk/etc/swift.conf
+[R] swift.conf
+[C] <Command Line>
+{
+    TCPPortRange: "50000, 50100"                            # [D] line 27
+    alwaysTransferWrapperLog: true                          # [R] line 42
+    executionRetries: 0                                     # [R] line 39
+    fileOperationsThrottle: 8                               # [D] line 121
+    fileTransfersThrottle: 4                                # [D] line 107
+    hostJobSubmitThrottle: 2                                # [D] line 95
+    jobSubmitThrottle: 4                                    # [D] line 83
+    keepSiteDir: true                                       # [R] line 40
+    lazyErrors: false                                       # [R] line 38
+    logProvenance: false                                    # [D] line 200
+    maxForeachThreads: 16384                                # [D] line 194
+    providerStagingPinSwiftFiles: false                     # [R] line 41
+    replicationEnabled: false                               # [D] line 146
+    replicationLimit: 3                                     # [D] line 157
+    replicationMinQueueTime: 60                             # [D] line 153
+	site {
+		cloud-static {
+            app.ALL.executable: "*"                         # [R] line 34
+			execution {
+                URL: "http://127.0.0.1:50010"               # [R] line 21
+                jobManager: "local:local"                   # [R] line 22
+				options {
+                    maxJobs: 10                             # [R] line 24
+                    tasksPerNode: 4                         # [R] line 25
+				}
+                type: "coaster-persistent"                  # [R] line 20
+			}
+            filesystem.type: "local"                        # [R] line 31
+            initialParallelTasks: 20                        # [R] line 29
+            maxParallelTasks: 20                            # [R] line 30
+            staging: "local"                                # [R] line 33
+            workDirectory: "/tmp/swiftwork"                 # [R] line 32
+		}
+		local {
+            app.ALL.executable: "*"                         # [R] line 15
+			execution {
+                URL: "localhost"                            # [R] line 10
+                type: "local"                               # [R] line 9
+			}
+			filesystem {
+                URL: "localhost"                            # [R] line 6
+                type: "local"                               # [R] line 5
+			}
+            initialParallelTasks: 31                        # [R] line 14
+            maxParallelTasks: 32                            # [R] line 13
+            workDirectory: "/tmp/ubuntu/swiftwork"          # [C]
+		}
+	}
+    sites: [cloud-static]                                   # [R] line 1
+    tracingEnabled: false                                   # [D] line 51
+}
+
+2014-10-25 08:27:23,281+0000 DEBUG textfiles BEGIN SWIFTSCRIPT:
+type file;
+
+app (file out, file log) count_words (file input, file wordcount_script)
+{
+  bash @wordcount_script @input stdout=@out stderr=@log;
+}
+
+app (file out, file log) merge (file s[], file merge_script)
+{
+  bash @merge_script filenames(s) stdout=@out stderr=@log;
+}
+
+int chunks = toInt(arg("chunks", "5"));
+
+file wordcount_script <"wordcount.sh">;
+file merge_script     <"merge.sh">;
+
+file chunk[]    <filesys_mapper; location="inputs", suffix=".txt">;
+file wcounter[];
+
+foreach book,i in books
+{
+  file wc_out <single_file_mapper; file=strcat("output/sim_",i,".out")>;
+  file wc_log <single_file_mapper; file=strcat("output/sim_",i,".log")>;
+  (wc_out, wc_log) = count_words (chunk[i], wordcount_script);
+  wcounter[i] = wc_out;
+}
+
+file merge_out<"output/final_output.out">;
+file merge_log<"output/final_output.log">;
+(merge_out, merge_log) = merge(wcounter, merge_script);
+
+
+
+2014-10-25 08:27:23,282+0000 DEBUG textfiles END SWIFTSCRIPT:
+2014-10-25 08:27:23,282+0000 INFO  Loader wordcount.swift: source file is new. Recompiling.
+2014-10-25 08:27:23,282+0000 DEBUG Loader kmlversion is >ee613f96-e326-4a30-9f06-5603f55d0943-no-provenance<
+2014-10-25 08:27:23,282+0000 DEBUG Loader build version is >ee613f96-e326-4a30-9f06-5603f55d0943-no-provenance<
+2014-10-25 08:27:24,282+0000 DEBUG Loader Detailed exception:
+org.griphyn.vdl.karajan.CompilationException: Compile error in foreach statement at line 21
+	at org.griphyn.vdl.engine.Karajan.foreachStat(Karajan.java:1188)
+	at org.griphyn.vdl.engine.Karajan.statement(Karajan.java:810)
+	at org.griphyn.vdl.engine.Karajan.statements(Karajan.java:770)
+	at org.griphyn.vdl.engine.Karajan.program(Karajan.java:419)
+	at org.griphyn.vdl.engine.Karajan.compile(Karajan.java:169)
+	at org.griphyn.vdl.karajan.Loader.compile(Loader.java:491)
+	at org.griphyn.vdl.karajan.Loader.main(Loader.java:191)
+Caused by: org.griphyn.vdl.karajan.CompilationException: Variable books was not declared in this scope.
+	at org.griphyn.vdl.engine.Karajan.expressionToKarajan(Karajan.java:1576)
+	at org.griphyn.vdl.engine.Karajan.expressionToKarajan(Karajan.java:1434)
+	at org.griphyn.vdl.engine.Karajan.foreachStat(Karajan.java:1153)
+	... 6 more

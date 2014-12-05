@@ -1,0 +1,34 @@
+Swift trunk git-rev: 2d334140f2c288e5aeb3d354de0ecda35b4b3aac heads/master 6130 (modified locally)
+RunID: run007
+Progress: Sat, 25 Oct 2014 03:56:41+0000
+Progress: Sat, 25 Oct 2014 03:56:42+0000  Stage in:11
+Progress: Sat, 25 Oct 2014 03:57:12+0000  Stage in:11
+Progress: Sat, 25 Oct 2014 03:57:42+0000  Stage in:11
+Progress: Sat, 25 Oct 2014 03:57:51+0000  Stage in:10  Active:1
+Progress: Sat, 25 Oct 2014 03:58:21+0000  Stage in:10  Active:1
+Progress: Sat, 25 Oct 2014 03:58:51+0000  Stage in:10  Active:1
+Progress: Sat, 25 Oct 2014 03:59:21+0000  Stage in:10  Active:1
+Progress: Sat, 25 Oct 2014 03:59:31+0000  Stage in:7  Active:4
+Progress: Sat, 25 Oct 2014 03:59:32+0000  Stage in:4  Active:6  Finished successfully:1
+Progress: Sat, 25 Oct 2014 03:59:33+0000  Stage in:2  Active:8  Finished successfully:1
+Progress: Sat, 25 Oct 2014 03:59:34+0000  Stage in:1  Active:9  Finished successfully:1
+Progress: Sat, 25 Oct 2014 03:59:37+0000  Active:10  Finished successfully:1
+Progress: Sat, 25 Oct 2014 04:00:07+0000  Active:10  Finished successfully:1
+Progress: Sat, 25 Oct 2014 04:00:37+0000  Active:10  Finished successfully:1
+Progress: Sat, 25 Oct 2014 04:01:07+0000  Active:10  Finished successfully:1
+Progress: Sat, 25 Oct 2014 04:01:37+0000  Active:10  Finished successfully:1
+Progress: Sat, 25 Oct 2014 04:02:07+0000  Active:10  Finished successfully:1
+Progress: Sat, 25 Oct 2014 04:02:37+0000  Active:10  Finished successfully:1
+Progress: Sat, 25 Oct 2014 04:03:07+0000  Active:10  Finished successfully:1
+Progress: Sat, 25 Oct 2014 04:03:37+0000  Active:10  Finished successfully:1
+Progress: Sat, 25 Oct 2014 04:03:52+0000  Active:9  Finished successfully:2
+Progress: Sat, 25 Oct 2014 04:03:56+0000  Active:8  Finished successfully:3
+Progress: Sat, 25 Oct 2014 04:04:00+0000  Active:7  Finished successfully:4
+Progress: Sat, 25 Oct 2014 04:04:01+0000  Active:5  Stage out:1  Finished successfully:5
+Progress: Sat, 25 Oct 2014 04:04:02+0000  Active:4  Finished successfully:7
+Progress: Sat, 25 Oct 2014 04:04:03+0000  Active:3  Finished successfully:8
+Progress: Sat, 25 Oct 2014 04:04:04+0000  Active:1  Finished successfully:10
+Progress: Sat, 25 Oct 2014 04:04:05+0000  Stage in:1  Finished successfully:11
+Progress: Sat, 25 Oct 2014 04:04:14+0000  Active:1  Finished successfully:11
+Progress: Sat, 25 Oct 2014 04:04:27+0000  Stage out:1  Finished successfully:11
+Final status:Sat, 25 Oct 2014 04:04:29+0000  Finished successfully:12
