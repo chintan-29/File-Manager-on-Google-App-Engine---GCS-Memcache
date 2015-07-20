@@ -1,5 +1,0 @@
-Swift trunk git-rev: 2d334140f2c288e5aeb3d354de0ecda35b4b3aac heads/master 6130 (modified locally)
-RunID: run009
-Could not start execution:
-	Compile error in foreach statement at line 21:
-	Variable books was not declared in this scope.

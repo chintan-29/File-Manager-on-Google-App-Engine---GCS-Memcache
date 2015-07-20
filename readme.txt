@@ -1,45 +1,1 @@
-For java
-
-compile code using:javac program.java
-run code using : java programname
-
-For multinode you have to pass the condition, for example 
-for 4 thread code 
-$ java wc_mul 4
-for 16 thread code
-$ java wc_mul 16
-for 8 thread code
-$ java wc_mul 8
-
-For hadoop
-
-You can run jar file as well as the same wordcount-hadoop.java file as we run in java.
-
-For swift
-
-Install python and libcloud library. Since we are using an Ubuntu instance:
-$ sudo apt-get install python python-pip
-$ sudo pip install apache-libcloud
-
-Get the cloud-tutorials repository from git
-
-First Install git using
-$ sudo apt-get install git
-$ git clone https://github.com/yadudoc/cloud-tutorials.git
-
-Go to ec2 directory to setup cluster
-$ cd cloud-tutorials/ec2
-
-Must source the setup script.
-$ source setup.sh
-
-Check AWS management console for  the status of the cluster. If every instance is ready (i.e. shows "2/2 ...."), then enter the command 
-$ connect headnode", 
-and you'll ssh to the headnode.
-and change directory read-write permission then go to count and
-Run  $ swift wordcount.swift 
-
-For MPI
-
-To compile your code : $mpicc mpi.c -o m1
-To run your code : $mpirun -np 16 ./m1
+MANUALGoogle Application url : http://acv-cloud-pro3.appspot.comDeploy Project Using Eclipse1. Add plugins for google-app-engine  in eclipse2. Import Application final_pa3 into eclipse workspace3. Go to browser and create new project into your google cloud account.https://console.developers.google.com4. Or create application on  5. https://appengine.google.com6. Now Deploy application on google app engine using google plugins in eclipse7. Select App Engine project setting in deploy window and configure your account and newly created application id8. Then deploy your application9. It will automatically redirect you to browser with your application url.10. Now click on start_project to go to your jsp page for file explorer.Upload Files1. Click on Browse button and select files created by FileGenerator2. Click on upload button--> which will uploads all your selected files and gives time taken for upload files on google storageFind Files1. Write file name to find on storage or memcache 2. Click on find button--> which gives files if present on storage or memcacheDelete Files1. Write file name to delete file from storage2. Click on delete button which delete file if present on storageOpen/Download File1. Write file name which you want to download or open from storage or memcache2. Click on download button open the file if present on storage or memcacheList All Files1. Click on show_all to get list of all files present on storage or memcacheCheck Cache : Write file name to check if file is present on memcache or not.Remove All from Cache :  Click on remove_all_cacke to flush memcacheRemove All from storage : Click on remove_all to empty storageFind Cache size : Click on ache_size to find size of fileFind Storage size : Click on storage_size to find size of storageCreate Data Storage :* To create a file we had created a file named FileGenerator.java* Compile : javac FileGenerator.java* Run : java FileGenerator
